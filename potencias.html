@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>APP MATEMATICAS</title>
+
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,600&display=swap" rel="stylesheet">
+  <!-- font wesome stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+
+</head>
+
+<body>
+  <div class="top_container">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <span>
+              APP MATEMATICAS
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.html"> Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="operaciones_matematicas.html"> Operaciones Matematicas </a>
+                </li>
+
+                <li class="nav-item ">
+                  <a class="nav-link" href="potencias.html"> Potencias </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="ecuaciones.html"> Ecuaciones </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="trigonometria.html">Funciones Trigonometricas</a>
+                </li>
+              </ul>
+            </div>
+        </nav>
+      </div>
+    </header>
+      <div class="container">
+
+        <h1 class="text-center">Tabla de Potencias</h1>
+        <div class="form-group">
+            <label for="base">Ingrese un número:</label>
+            <input type="number" class="form-control" id="base" min="1" required>
+        </div><br>
+        <button class="btn btn-primary" id="calcular">Calcular</button>
+        <div class="mt-4">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Exponente</th>
+                        <th>Resultado</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaPotencias">
+                    <!-- Aquí se mostrarán las potencias -->
+                </tbody>
+            </table>
+        </div>
+        <h1 class="text-center">Calculadora de Potencias</h1>
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <form id="potenciaForm">
+                    <div class="form-group">
+                        <label for="base">Base:</label>
+                        <input type="number" class="form-control" id="base" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exponente">Exponente:</label>
+                        <input type="number" class="form-control" id="exponente" min="0" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Calcular</button>
+                </form>
+            </div>
+        </div>
+        <div class="mt-4">
+            <p class="text-center" id="resultadopotencia"></p>
+        </div>
+
+      </div>
+
+
+
+
+
+  <!-- footer section -->
+  <section class="container-fluid footer_section">
+    <p>
+      Copyright &copy; 2019 All Rights Reserved By
+      <a href="https://html.design/">Free Html Templates</a>
+    </p>
+  </section>
+  <!-- footer section -->
+
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script>
+    document.getElementById('calcular').addEventListener('click', function () {
+      const base = parseInt(document.getElementById('base').value);
+      const tablaPotencias = document.getElementById('tablaPotencias');
+      tablaPotencias.innerHTML = ''; // Limpiamos resultados anteriores
+  
+      for (let exponente = 1; exponente <= 12; exponente++) {
+          const resultado = Math.pow(base, exponente);
+          const fila = document.createElement('tr');
+          fila.innerHTML = `
+              <td>${base}<sup>${exponente}</sup></td>
+              <td>${resultado}</td>
+          `;
+          tablaPotencias.appendChild(fila);
+      }
+  });  
+
+  document.getElementById('potenciaForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+
+            const base = parseInt(document.getElementById('potenciaForm').elements['base'].value);
+           const exponente = parseInt(document.getElementById('potenciaForm').elements['exponente'].value);
+           const resultadoElement = document.getElementById('resultadopotencia');
+
+            if (isNaN(base) || isNaN(exponente)) {
+                resultadoElement.innerText = 'Por favor, ingrese números válidos.';
+            } else {
+                const resultado = Math.pow(base, exponente);
+                resultadoElement.innerText = `Resultado: ${base}^${exponente} = ${resultado}`;
+            }
+        });
+
+   </script>
+  
+ 
+</body>
+
+</html>

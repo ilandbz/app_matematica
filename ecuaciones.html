@@ -80,27 +80,89 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <div class="why_img-container">
-              <img src="images/why.png" alt="">
+            <h1 class="text-center">Calculadora de Ecuación Lineal</h1>
+            <h2>ax+b=c</h2>
+            <div class="row">
+                <div class="col-md-4 offset-md-4">
+                    <form id="ecuacionForm">
+                        <div class="form-group">
+                            <label for="valorA">Valor de "a":</label>
+                            <input type="number" class="form-control" id="valorA" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="valorB">Valor de "b":</label>
+                            <input type="number" class="form-control" id="valorB" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="valorC">Valor de "c":</label>
+                            <input type="number" class="form-control" id="valorC" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Calcular</button>
+                    </form>
+                </div>
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="why_detail-box">
-              <h3>
-                ECUACIONES
-              </h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              </p>
-              <div class="">
-
-              </div>
+            <div class="mt-4">
+              <p class="text-center" id="resultado"></p>
             </div>
           </div>
         </div>
       </div>
+      <div class="container mt-5">
+        <h2>Calculadora de Segundo Grado</h2>
+        <h2>aX<sup>2</sup> + bX + C = 0</h2>
+        <form id="quadraticForm">
+            <div class="form-group">
+                <label for="a">Coeficiente 'a':</label>
+                <input type="number" class="form-control" id="a" required>
+            </div>
+            <div class="form-group">
+                <label for="b">Coeficiente 'b':</label>
+                <input type="number" class="form-control" id="b" required>
+            </div>
+            <div class="form-group">
+                <label for="c">Coeficiente 'c':</label>
+                <input type="number" class="form-control" id="c" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Calcular</button>
+        </form>
+        <div id="result_segundogrado" class="mt-4"></div>
+    </div>
+    <div class="container mt-5">
+      <h2>Calculadora de Ecuaciones Lineales</h2>
+      <h2>a1x + b1y +c1 = 0;</h2>
+      <h2>a2x + b2y +c2 = 0;</h2>
+      <form id="linearEquationsForm">
+          <div class="form-group">
+              <label for="a1">Coeficiente 'a1':</label>
+              <input type="number" class="form-control" id="a1" required>
+          </div>
+          <div class="form-group">
+              <label for="b1">Coeficiente 'b1':</label>
+              <input type="number" class="form-control" id="b1" required>
+          </div>
+          <div class="form-group">
+              <label for="c1">Coeficiente 'c1':</label>
+              <input type="number" class="form-control" id="c1" required>
+          </div>
+          <div class="form-group">
+              <label for="a2">Coeficiente 'a2':</label>
+              <input type="number" class="form-control" id="a2" required>
+          </div>
+          <div class="form-group">
+              <label for="b2">Coeficiente 'b2':</label>
+              <input type="number" class="form-control" id="b2" required>
+          </div>
+          <div class="form-group">
+              <label for="c2">Coeficiente 'c2':</label>
+              <input type="number" class="form-control" id="c2" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Calcular</button>
+      </form>
+      <div id="result_2variables" class="mt-4"></div>
+    </div>
+
+
+    
     </section>
 
 
@@ -113,8 +175,8 @@
   <!-- footer section -->
   <section class="container-fluid footer_section">
     <p>
-      Copyright &copy; 2019 All Rights Reserved By
-      <a href="https://html.design/">Free Html Templates</a>
+      Copyright &copy; 2023 All Rights Reserved By
+      <a href="#">CFF</a>
     </p>
   </section>
   <!-- footer section -->
@@ -122,7 +184,68 @@
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
 
+  <script>
+    document.getElementById('ecuacionForm').addEventListener('submit', function (e) {
+        e.preventDefault();
 
+        const valorA = parseFloat(document.getElementById('valorA').value);
+        const valorB = parseFloat(document.getElementById('valorB').value);
+        const valorC = parseFloat(document.getElementById('valorC').value);
+        const resultadoElement = document.getElementById('resultado');
+
+        if (isNaN(valorA) || isNaN(valorB) || isNaN(valorC)) {
+            resultadoElement.innerText = 'Por favor, ingrese números válidos.';
+        } else {
+            if (valorA === 0) {
+                resultadoElement.innerText = 'El valor de "a" no puede ser cero.';
+            } else {
+                const resultado = (valorC - valorB) / valorA;
+                resultadoElement.innerText = `Resultado: x = ${(resultado).toFixed(2)}`;
+            }
+        }
+    });
+        document.getElementById('quadraticForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const a = parseFloat(document.getElementById('a').value);
+            const b = parseFloat(document.getElementById('b').value);
+            const c = parseFloat(document.getElementById('c').value);
+
+            const discriminant = b * b - 4 * a * c;
+
+            if (discriminant > 0) {
+                const x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+                const x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+                document.getElementById('result_segundogrado').innerHTML = `Las soluciones son x1 = ${x1.toFixed(2)} y x2 = ${x2.toFixed(2)}`;
+            } else if (discriminant === 0) {
+                const x = -b / (2 * a);
+                document.getElementById('result_segundogrado').innerHTML = `La solución única es x = ${x.toFixed(2)}`;
+            } else {
+                document.getElementById('result_segundogrado').innerHTML = 'No hay soluciones reales';
+            }
+        });
+        document.getElementById('linearEquationsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const a1 = parseFloat(document.getElementById('a1').value);
+            const b1 = parseFloat(document.getElementById('b1').value);
+            const c1 = parseFloat(document.getElementById('c1').value);
+            const a2 = parseFloat(document.getElementById('a2').value);
+            const b2 = parseFloat(document.getElementById('b2').value);
+            const c2 = parseFloat(document.getElementById('c2').value);
+
+            // Comprobar si el sistema tiene solución
+            const determinant = a1 * b2 - a2 * b1;
+
+            if (determinant !== 0) {
+                const x = (c1 * b2 - c2 * b1) / determinant;
+                const y = (a1 * c2 - a2 * c1) / determinant;
+                document.getElementById('result_2variables').innerHTML = `La solución es x = ${x.toFixed(2)} y y = ${y.toFixed(2)}`;
+            } else {
+                document.getElementById('result_2variables').innerHTML = 'El sistema no tiene solución única (es singular o no tiene solución)';
+            }
+        });
+</script>
 </body>
 
 </html>

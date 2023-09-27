@@ -89,30 +89,27 @@
                 FUNCIONES TRIGONOMETRICAS
               </h3>
               <div class="container mt-5">
-                  <h1 class="text-center">Calculadora de Ecuación Lineal</h1>
-                  <div class="row">
-                      <div class="col-md-4 offset-md-4">
-                          <p>ax + b = c</p>
-                          <form id="ecuacionForm">
-                              <div class="form-group">
-                                  <label for="valorA">Valor de "a":</label>
-                                  <input type="number" class="form-control" id="valorA" required>
-                              </div>
-                              <div class="form-group">
-                                  <label for="valorB">Valor de "b":</label>
-                                  <input type="number" class="form-control" id="valorB" required>
-                              </div>
-                              <div class="form-group">
-                                  <label for="valorC">Valor de "c":</label>
-                                  <input type="number" class="form-control" id="valorC" required>
-                              </div>
-                              <button type="submit" class="btn btn-primary btn-block">Calcular</button>
-                          </form>
+                <div class="container mt-5">
+                  <h2>Calculadora Trigonométrica</h2>
+                  <form id="trigCalculator">
+                      <div class="form-group">
+                          <label for="angle">Ángulo (en grados):</label>
+                          <input type="number" class="form-control" id="angle" required>
                       </div>
-                  </div>
-                  <div class="mt-4">
-                      <p class="text-center" id="resultado"></p>
-                  </div>
+                      <div class="form-group">
+                          <label for="function">Función:</label>
+                          <select class="form-control" id="function">
+                              <option value="sin">Seno (sin)</option>
+                              <option value="cos">Coseno (cos)</option>
+                              <option value="tan">Tangente (tan)</option>
+                              <option value="cot">Cotangente (cot)</option>
+                              <option value="sec">Secante (sec)</option>
+                              <option value="csc">Cosecante (csc)</option>
+                          </select>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Calcular</button>
+                  </form>
+                  <div id="result" class="mt-4"></div>
               </div>
             </div>
           </div>
@@ -133,8 +130,8 @@
   <!-- footer section -->
   <section class="container-fluid footer_section">
     <p>
-      Copyright &copy; 2019 All Rights Reserved By
-      <a href="https://html.design/">Free Html Templates</a>
+      Copyright &copy; 2023 All Rights Reserved By
+      <a href="#">CFF</a>
     </p>
   </section>
   <!-- footer section -->
@@ -144,25 +141,40 @@
 
 
   <script>
-        document.getElementById('ecuacionForm').addEventListener('submit', function (e) {
+ document.getElementById('trigCalculator').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const valorA = parseFloat(document.getElementById('valorA').value);
-            const valorB = parseFloat(document.getElementById('valorB').value);
-            const valorC = parseFloat(document.getElementById('valorC').value);
-            const resultadoElement = document.getElementById('resultado');
+      const angle = parseFloat(document.getElementById('angle').value);
+      const func = document.getElementById('function').value;
 
-            if (isNaN(valorA) || isNaN(valorB) || isNaN(valorC)) {
-                resultadoElement.innerText = 'Por favor, ingrese números válidos.';
-            } else {
-                if (valorA === 0) {
-                    resultadoElement.innerText = 'El valor de "a" no puede ser cero.';
-                } else {
-                    const resultado = (valorC - valorB) / valorA;
-                    resultadoElement.innerText = `Resultado: x = ${(resultado).toFixed(2)}`;
-                }
-            }
-        });
+      const radians = (angle * Math.PI) / 180; // Convertir a radianes
+
+      let result;
+      switch (func) {
+          case 'sin':
+              result = Math.sin(radians);
+              break;
+          case 'cos':
+              result = Math.cos(radians);
+              break;
+          case 'tan':
+              result = Math.tan(radians);
+              break;
+          case 'cot':
+              result = 1 / Math.tan(radians); // Cotangente es el inverso de la tangente
+              break;
+          case 'sec':
+              result = 1 / Math.cos(radians); // Secante es el inverso del coseno
+              break;
+          case 'csc':
+              result = 1 / Math.sin(radians); // Cosecante es el inverso del seno
+              break;
+          default:
+              result = 'Función no válida';
+      }
+
+      document.getElementById('result').innerHTML = `El resultado de ${func}(${angle}°) es ${result.toFixed(4)}`;
+  });
   </script>
 
 </body>

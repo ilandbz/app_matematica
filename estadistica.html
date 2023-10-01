@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>APP MATEMATICAS</title>
+
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,600&display=swap" rel="stylesheet">
+  <!-- font wesome stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+
+</head>
+
+<body class="sub_page">
+  <div class="top_container ">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <span>
+              APP MATEMATICAS
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.html"> Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="operaciones_matematicas.html"> Operaciones Matematicas </a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="potencias.html"> Potencias </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="ecuaciones.html"> Ecuaciones </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="trigonometria.html">Funciones Trigonometricas</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="proporcionalidad.html">Proporcionalidad y Porcentaje</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="conjuntos.html">Conjuntos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="algebra.html">Algebra</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="geometria.html">Geometria</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="estadistica.html">Estadistica</a>
+                </li>
+              </ul>
+            </div>
+        </nav>
+      </div>
+    </header>
+
+  </div>
+  <!-- end header section -->
+
+  <div class="common_style">
+
+    <!-- admission section -->
+    <section class="admission_section">
+        
+ 
+
+
+
+        <div class="container mt-5">
+            <h1>Calculadora de Mediana y Moda</h1>
+            <div class="form-group mt-3">
+                <label for="dataInput">Ingresa los datos (separados por comas):</label>
+                <input type="text" class="form-control" id="dataInput" placeholder="Ejemplo: 5, 7, 3, 2, 5">
+            </div>
+            <button class="btn btn-primary mt-3" id="calcularBtn">Calcular</button>
+            <div class="mt-3">
+                <p>Media: <span id="mediaResultado"></span></p>
+                <p>Mediana: <span id="medianaResultado"></span></p>
+                <p>Moda: <span id="modaResultado"></span></p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- end admission section -->
+
+
+  </div>
+
+
+  <!-- end info section -->
+
+  <!-- footer section -->
+  <section class="container-fluid footer_section">
+    <p>
+      Copyright &copy; 2023 All Rights Reserved By
+      <a href="#">CFF</a>
+    </p>
+  </section>
+  <!-- footer section -->
+
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+
+
+  <script>
+        // Agrega un evento clic al botón "Calcular"
+        document.getElementById("calcularBtn").addEventListener("click", function() {
+            // Obtiene los datos ingresados por el usuario
+            const inputData = document.getElementById("dataInput").value;
+            // Divide los datos separados por comas en un array
+            const datos = inputData.split(",").map(Number);
+
+            // Llama a las funciones para calcular la mediana y la moda
+            const mediana = calcularMediana(datos);
+            const moda = calcularModa(datos);
+            const media = calcularMedia(datos);
+            // Muestra los resultados en la página
+            document.getElementById("medianaResultado").textContent = mediana;
+            document.getElementById("modaResultado").textContent = moda.join(", ");
+            document.getElementById("mediaResultado").textContent = media;
+        });
+
+        // Función para calcular la mediana (código anterior)
+        function calcularMediana(datos) {
+            // Ordena los datos en orden ascendente
+            datos.sort(function(a, b) {
+                return a - b;
+            });
+
+            const mitad = Math.floor(datos.length / 2);
+
+            if (datos.length % 2 === 0) {
+                // Si hay un número par de datos, la mediana es el promedio de los dos números del medio
+                return (datos[mitad - 1] + datos[mitad]) / 2;
+            } else {
+                // Si hay un número impar de datos, la mediana es el número del medio
+                return datos[mitad];
+            }
+        }
+
+        // Función para calcular la moda (código anterior)
+        function calcularModa(datos) {
+            const conteo = {};
+            let moda = [];
+            let maxFrecuencia = 0;
+
+            datos.forEach(function(dato) {
+                if (conteo[dato]) {
+                    conteo[dato]++;
+                } else {
+                    conteo[dato] = 1;
+                }
+
+                if (conteo[dato] > maxFrecuencia) {
+                    moda = [dato];
+                    maxFrecuencia = conteo[dato];
+                } else if (conteo[dato] === maxFrecuencia) {
+                    moda.push(dato);
+                }
+            });
+
+            // Si todas las frecuencias son 1, no hay moda
+            if (maxFrecuencia === 1) {
+                moda = [];
+            }
+
+            return moda;
+        }
+
+        function calcularMedia(datos) {
+            // Suma todos los datos y divide por la cantidad de datos
+            const suma = datos.reduce((total, num) => total + num, 0);
+            const media = suma / datos.length;
+            return media.toFixed(2); // Redondea a 2 decimales
+        }
+
+
+
+  </script>
+
+</body>
+
+</html>

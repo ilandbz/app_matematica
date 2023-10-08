@@ -61,6 +61,9 @@
                   <a class="nav-link" href="ecuaciones.html"> Ecuaciones </a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link" href="fracciones.html">Fracciones</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="trigonometria.html">Funciones Trigonometricas</a>
                 </li>
                 <li class="nav-item">
@@ -76,10 +79,14 @@
                   <a class="nav-link" href="geometria.html">Geometria</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="estadistica.html">Estadistica</a>
+                  <a class="nav-link" href="triangulo.html">Triangulos</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="poligonos.html">Poligonos</a>
+                </li>  
               </ul>
             </div>
+          </div>
         </nav>
       </div>
     </header>
@@ -108,6 +115,9 @@
                 <p>Mediana: <span id="medianaResultado"></span></p>
                 <p>Moda: <span id="modaResultado"></span></p>
             </div>
+            <div class="mt-5">
+              <canvas id="myChart" width="400" height="200"></canvas>
+          </div>
         </div>
     </section>
 
@@ -120,7 +130,8 @@
 
 
   <!-- end info section -->
-
+  <br>
+  <a href="index.html" title="Volver Al Inicio"><img src="images/volver.webp" width="60px" alt=""></a>
   <!-- footer section -->
   <section class="container-fluid footer_section">
     <p>
@@ -132,7 +143,7 @@
 
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <script>
         // Agrega un evento clic al botón "Calcular"
@@ -142,6 +153,9 @@
             // Divide los datos separados por comas en un array
             const datos = inputData.split(",").map(Number);
 
+            //const dataInput = document.getElementById("dataInput").value;
+    //const dataArray = dataInput.split(",").map(Number);
+
             // Llama a las funciones para calcular la mediana y la moda
             const mediana = calcularMediana(datos);
             const moda = calcularModa(datos);
@@ -150,8 +164,33 @@
             document.getElementById("medianaResultado").textContent = mediana;
             document.getElementById("modaResultado").textContent = moda.join(", ");
             document.getElementById("mediaResultado").textContent = media;
-        });
+            // Genera el gráfico de barras utilizando Chart.js
+            generarGrafico(datos);
 
+        });
+        function generarGrafico(dataArray) {
+    const ctx = document.getElementById("myChart").getContext("2d");
+    new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: dataArray.map((_, index) => `Dato ${index + 1}`),
+            datasets: [{
+                label: "Datos",
+                data: dataArray,
+                backgroundColor: "rgba(75, 192, 192, 0.2)",
+                borderColor: "rgba(75, 192, 192, 1)",
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
         // Función para calcular la mediana (código anterior)
         function calcularMediana(datos) {
             // Ordena los datos en orden ascendente

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>APP MATEMATICAS</title>
+
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,600&display=swap" rel="stylesheet">
+  <!-- font wesome stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+
+<style>
+  .oculto {
+    max-width: 100%;
+    height: auto;
+    display: none; 
+  }
+</style>
+
+</head>
+<body class="sub_page">
+  <div class="top_container ">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <a class="navbar-brand" href="index.html">
+              <span>
+                APP MATEMATICAS
+              </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+  
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+                <ul class="navbar-nav  ">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="index.html"> Inicio <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item ">
+                    <a class="nav-link" href="operaciones_matematicas.html"> Operaciones Matematicas </a>
+                  </li>
+                  <li class="nav-item ">
+                    <a class="nav-link" href="potencias.html"> Potencias </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="ecuaciones.html"> Ecuaciones </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="fracciones.html">Fracciones</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="trigonometria.html">Funciones Trigonometricas</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="proporcionalidad.html">Proporcionalidad y Porcentaje</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="conjuntos.html">Conjuntos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="algebra.html">Algebra</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="geometria.html">Geometria</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="triangulo.html">Triangulos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="poligonos.html">Poligonos</a>
+                  </li>        
+                </ul>
+              </div>
+            </div>
+        </nav>
+      </div>
+    </header>
+  </div>
+  <!-- end header section -->
+
+
+    <section class="about_section">
+      <div class="container">
+        <div class="container mt-5">
+          <h1 class="text-center">Calculadora de Fracciones</h1>
+          <div class="row justify-content-center">
+              <div class="col-md-4">
+                  <div class="form-group">
+                      <label for="fraction1">Fracción 1 (ejemplo: 1/2)</label>
+                      <input type="text" class="form-control" id="fraction1" placeholder="Ingrese Fracción 1">
+                  </div>
+              </div>
+              <div class="col-md-2">
+                  <div class="form-group">
+                      <label for="operation">Operación</label>
+                      <select class="form-control" id="operation">
+                          <option value="sum">+</option>
+                          <option value="subtract">-</option>
+                          <option value="multiply">*</option>
+                          <option value="divide">/</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="form-group">
+                      <label for="fraction2">Fracción 2 (ejemplo: 1/3)</label>
+                      <input type="text" class="form-control" id="fraction2" placeholder="Ingrese Fracción 2">
+                  </div>
+              </div>
+              <div class="col-md-2">
+                  <button class="btn btn-primary btn-block" onclick="calculateFractions()">Calcular</button>
+              </div>
+          </div>
+          <div class="row justify-content-center">
+              <div class="col-md-8">
+                  <div class="alert alert-info mt-3" id="result"></div>
+              </div>
+          </div>
+      </div>
+      </div>
+    </section>
+
+
+    <section class="about_section">
+        <div class="container">
+          <div class="container mt-5">
+            <h1 class="text-center">Fracciones Homogeneas y Heterogeneas</h1>
+            <div class="container mt-5">
+            <h1>Homogeneo</h1>
+            <p class="text-justify">Dos fracciones son homogéneas cuando sus denominadores son iguales. Y ¿qué significa esto? Que dos fracciones sean homogéneas significa que en ambas fracciones el denominador es el mismo, es decir, la unidad está dividida en la misma cantidad de partes y por ello sus denominadores son iguales.</p>
+            <button id="mostrarHomogeneo" class="btn btn-primary">Mostrar</button>
+            <div id="imagenHomogeneoContainer" class="mt-3">
+                <img id="imagenHomogeneo" class="oculto" src="images/homogeneo.png" alt="Fracciones Homogeneas">
+            </div>
+            <h1>Heterogeneo</h1>
+            <p class="text-justify">Dos fracciones son heterogéneas cuando sus denominadores son diferentes. Y, ¿qué significa esto? Que dos fracciones sean heterogéneas significa que en ambas fracciones la unidad está dividida en una cantidad diferentes de partes y, por eso, sus denominadores son distintos.</p>
+            <button id="mostrarHeterogeneo" class="btn btn-primary">Mostrar</button>
+            <div id="imagenHeterogeneoContainer" class="mt-3">
+                <img id="imagenHeterogeneo" class="oculto" src="images/heterogeneo.png" alt="Fracciones Heterogeneas">
+            </div>
+        </div>
+        </div>
+      </section>
+      <div class="container mt-5">
+        <h2>Operaciones</h2>
+        <form id="calculator-form">
+            <div class="form-group">
+                <label for="numerator1">Numerador Fracción 1:</label>
+                <input type="number" class="form-control" id="numerator1" required>
+            </div>
+            <div class="form-group">
+                <label for="denominator1">Denominador Fracción 1:</label>
+                <input type="number" class="form-control" id="denominator1" required>
+            </div>
+            <div class="form-group">
+                <label for="numerator2">Numerador Fracción 2:</label>
+                <input type="number" class="form-control" id="numerator2" required>
+            </div>
+            <div class="form-group">
+                <label for="denominator2">Denominador Fracción 2:</label>
+                <input type="number" class="form-control" id="denominator2" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Calcular Suma</button>
+            <button type="button" class="btn btn-danger" id="subtract-button">Calcular Resta</button>
+        </form>
+        <div id="resultf" class="mt-3"></div>
+    </div>
+  <br>
+  <a href="index.html" title="Volver Al Inicio"><img src="images/volver.webp" width="60px" alt=""></a>
+  <!-- footer section -->
+  <section class="container-fluid footer_section">
+    <p>
+      Copyright &copy; 2023 All Rights Reserved By
+      <a href="#">CFF</a>
+    </p>
+  </section>
+  <!-- footer section -->
+
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+<script>
+
+function calculateFractions() {
+    const fraction1 = parseFraction(document.getElementById('fraction1').value);
+    const fraction2 = parseFraction(document.getElementById('fraction2').value);
+    const operation = document.getElementById('operation').value;
+    let result;
+    switch (operation) {
+        case 'sum':
+            result = addFractions(fraction1, fraction2);
+            break;
+        case 'subtract':
+            result = subtractFractions(fraction1, fraction2);
+            break;
+        case 'multiply':
+            result = multiplyFractions(fraction1, fraction2);
+            break;
+        case 'divide':
+            result = divideFractions(fraction1, fraction2);
+            break;
+    }
+    const roundedDown = Math.floor(parseFloat(result));
+    const roundedUp = Math.ceil(parseFloat(result));
+    document.getElementById('result').textContent = `Resultado: ${result}      `;
+    document.getElementById('result').innerHTML += `Aproximación por defecto: ${roundedDown}, Aproximación por exceso: ${roundedUp}`;
+}
+function parseFraction(input) {
+    const [numerator, denominator] = input.split('/').map(Number);
+    if (!isNaN(numerator) && !isNaN(denominator) && denominator !== 0) {
+        return [numerator, denominator];
+    }
+    return null;
+}
+function addFractions(fraction1, fraction2) {
+    const [num1, den1] = fraction1;
+    const [num2, den2] = fraction2;
+    const commonDenominator = den1 * den2;
+    const resultNumerator = num1 * den2 + num2 * den1;
+    return simplifyFraction([resultNumerator, commonDenominator]);
+}
+
+function subtractFractions(fraction1, fraction2) {
+    const [num1, den1] = fraction1;
+    const [num2, den2] = fraction2;
+    const commonDenominator = den1 * den2;
+    const resultNumerator = num1 * den2 - num2 * den1;
+    return simplifyFraction([resultNumerator, commonDenominator]);
+}
+
+function multiplyFractions(fraction1, fraction2) {
+    const [num1, den1] = fraction1;
+    const [num2, den2] = fraction2;
+    const resultNumerator = num1 * num2;
+    const resultDenominator = den1 * den2;
+    return simplifyFraction([resultNumerator, resultDenominator]);
+}
+
+function divideFractions(fraction1, fraction2) {
+    const [num1, den1] = fraction1;
+    const [num2, den2] = fraction2;
+    const resultNumerator = num1 * den2;
+    const resultDenominator = den1 * num2;
+    return simplifyFraction([resultNumerator, resultDenominator]);
+}
+
+function simplifyFraction(fraction) {
+    const [numerator, denominator] = fraction;
+    const gcd = greatestCommonDivisor(numerator, denominator);
+    return [numerator / gcd, denominator / gcd];
+}
+
+function greatestCommonDivisor(a, b) {
+    return b === 0 ? a : greatestCommonDivisor(b, a % b);
+}
+const mostrarBoton1 = document.getElementById('mostrarHomogeneo');
+
+mostrarBoton1.addEventListener('click', function () {
+    const imagenHomogeneo = document.getElementById('imagenHomogeneo');
+    imagenHomogeneo.style.display = 'block';
+});
+
+const mostrarBoton2 = document.getElementById('mostrarHeterogeneo');
+
+mostrarBoton2.addEventListener('click', function () {
+    const imagenHeterogeneo = document.getElementById('imagenHeterogeneo');
+    imagenHeterogeneo.style.display = 'block';
+});
+document.getElementById("calculator-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    calculateSum();
+});
+document.getElementById("subtract-button").addEventListener("click", function() {
+            calculateSubtraction();
+        });
+
+
+        function calculateSubtraction() {
+            // Obtener los valores de las fracciones ingresadas por el usuario
+            const numerator1 = parseFloat(document.getElementById("numerator1").value);
+            const denominator1 = parseFloat(document.getElementById("denominator1").value);
+            const numerator2 = parseFloat(document.getElementById("numerator2").value);
+            const denominator2 = parseFloat(document.getElementById("denominator2").value);
+            // Calcular la resta de las fracciones
+            const resultNumerator = numerator1 * denominator2 - numerator2 * denominator1;
+            const resultDenominator = denominator1 * denominator2;
+            // Determinar si la resta es homogénea o heterogénea
+            const isHomogeneous = denominator1 === denominator2;
+            // Simplificar la fracción resultante (opcional)
+            const gcd = function(a, b) {
+                return b === 0 ? a : gcd(b, a % b);
+            };
+            const commonDivisor = gcd(resultNumerator, resultDenominator);
+            const simplifiedNumerator = resultNumerator / commonDivisor;
+            const simplifiedDenominator = resultDenominator / commonDivisor;
+            // Mostrar el resultado y si es homogéneo o heterogéneo en la página
+            const resultElement = document.getElementById("resultf");
+            resultElement.innerHTML = `Resultado: ${simplifiedNumerator}/${simplifiedDenominator}<br>`;
+            resultElement.innerHTML += isHomogeneous ? "Es una resta homogénea." : "Es una resta heterogénea.";
+        }
+
+        function calculateSum(){
+            // Obtener los valores de las fracciones ingresadas por el usuario
+            const numerator1 = parseFloat(document.getElementById("numerator1").value);
+            const denominator1 = parseFloat(document.getElementById("denominator1").value);
+            const numerator2 = parseFloat(document.getElementById("numerator2").value);
+            const denominator2 = parseFloat(document.getElementById("denominator2").value);
+            // Calcular la suma de las fracciones
+            const resultNumerator = numerator1 * denominator2 + numerator2 * denominator1;
+            const resultDenominator = denominator1 * denominator2;
+            // Simplificar la fracción resultante (opcional)
+            const gcd = function(a, b) {
+                return b === 0 ? a : gcd(b, a % b);
+            };
+            const commonDivisor = gcd(resultNumerator, resultDenominator);
+            const simplifiedNumerator = resultNumerator / commonDivisor;
+            const simplifiedDenominator = resultDenominator / commonDivisor;
+            // Determinar si la suma es homogénea o heterogénea
+            const isHomogeneous = denominator1 === denominator2;
+            // Mostrar el resultado en la página
+            const resultElement = document.getElementById("resultf");
+            //document.getElementById("resultf").innerHTML = `Resultado: ${simplifiedNumerator}/${simplifiedDenominator}`;
+            resultElement.innerHTML = `Resultado: ${simplifiedNumerator}/${simplifiedDenominator}<br>`;
+            resultElement.innerHTML += isHomogeneous ? "Es una suma homogénea." : "Es una suma heterogénea.";
+        }
+
+</script>
+
+
+</body>
+
+</html>

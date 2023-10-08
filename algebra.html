@@ -61,6 +61,9 @@
                   <a class="nav-link" href="ecuaciones.html"> Ecuaciones </a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link" href="fracciones.html">Fracciones</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="trigonometria.html">Funciones Trigonometricas</a>
                 </li>
                 <li class="nav-item">
@@ -68,18 +71,22 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="conjuntos.html">Conjuntos</a>
-                </li> 
+                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="algebra.html">Algebra</a>
-                </li> 
+                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="geometria.html">Geometria</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="estadistica.html">Estadistica</a>
-                </li>                
+                  <a class="nav-link" href="triangulo.html">Triangulos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="poligonos.html">Poligonos</a>
+                </li>     
               </ul>
             </div>
+          </div>
         </nav>
       </div>
     </header>
@@ -255,6 +262,8 @@
     <h3>Ejemplo 4:</h3>
     <p>Polinomio: (a + b)^2 - 2ab</p>
 </div>
+<br>
+<a href="index.html" title="Volver Al Inicio"><img src="images/volver.webp" width="60px" alt=""></a>
   <!-- footer section -->
   <section class="container-fluid footer_section">
     <p>
@@ -271,9 +280,7 @@
             const patternType = document.getElementById('patternType').value;
             const patternTable = document.getElementById('patternTable');
             patternTable.innerHTML = ''; // Limpiamos la tabla antes de mostrar el nuevo patrón
-
             let start, end, step;
-
             switch (patternType) {
                 case 'ascendente':
                     start = 1;
@@ -293,7 +300,6 @@
                 default:
                     return;
             }
-
             for (let i = start; (patternType === 'ascendente' || patternType === 'triangular') ? i <= end : i >= end; i += step) {
                 const row = document.createElement('tr');
                 const cell = document.createElement('td');
@@ -302,7 +308,6 @@
                 patternTable.appendChild(row);
             }
         }
-
         document.getElementById('resolver').addEventListener('click', function() {
             // Obtener coeficientes y constantes ingresados por el usuario
             const coefA = parseFloat(document.getElementById('coefA').value);
@@ -329,7 +334,7 @@
         });
 
   </script>
-  
+
  
 </body>
 

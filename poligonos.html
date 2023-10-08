@@ -26,24 +26,7 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
-  <style>
-    /* Estilos para la imagen */
-    .angulo-recto-img {
-        max-width: 100%;
-        height: auto;
-        display: none; /* La imagen está oculta por defecto */
-    }
-    .angulo-obtuso-img {
-        max-width: 100%;
-        height: auto;
-        display: none; /* La imagen está oculta por defecto */
-    }
-    .angulo-llano-img {
-        max-width: 100%;
-        height: auto;
-        display: none; /* La imagen está oculta por defecto */
-    }
-</style>
+
 </head>
 
 <body class="sub_page">
@@ -100,7 +83,7 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="poligonos.html">Poligonos</a>
-                </li>       
+                </li>   
               </ul>
             </div>
           </div>
@@ -113,37 +96,41 @@
 
   <div class="common_style">
     <div class="container mt-5">
-        <h1>Ángulo Recto</h1>
-        <p>Presiona el botón para ver un ángulo recto:</p>
-        <button id="mostrarAnguloRecto" class="btn btn-primary">Mostrar</button>
-        <div id="imagenAnguloRectoContainer" class="mt-3">
-            <img id="imagenAnguloRecto" class="angulo-recto-img" src="images/angulo_recto.png" alt="Ángulo Recto">
+        <p>
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseEquilatero" role="button" aria-expanded="false" aria-controls="collapseEquilatero">
+              TRIANGULO EQUILATERO
+            </a>
+        </p>
+        <div class="collapse" id="collapseEquilatero">
+            <div class="card card-body">
+                En geometría, un triángulo equilátero es un polígono regular, es decir, tiene sus tres lados iguales.Los Triángulos equiláteros también son equiangulares, es decir, los tres ángulos internos son iguales.
+                <img class="angulo-recto-img" src="images/equilatero.png" alt="Equilatero">
+            </div>
         </div>
-        <h1>Ángulo Obtuso</h1>
-        <p>Presiona el botón para ver un ángulo Obtuso:</p>
-        <button id="mostrarAnguloObtuso" class="btn btn-primary">Mostrar</button>
-        <div id="imagenAnguloObtusoContainer" class="mt-3">
-            <img id="imagenAnguloObtuso" class="angulo-obtuso-img" src="images/anguloobtuso.png" alt="Ángulo Obtuso">
+        <p>
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseIsosceles" role="button" aria-expanded="false" aria-controls="collapseIsosceles">
+              TRIANGULO ISOSCELES
+            </a>
+        </p>
+        <div class="collapse" id="collapseIsosceles">
+            <div class="card card-body">
+                El triángulo isósceles es un tipo de triángulo que tiene dos lados (patas) de igual longitud. Una consecuencia de tener dos lados de igual longitud implica que también los dos ángulos opuestos a estos lados midan lo mismo.
+                <img src="images/isosceles.webp" alt="ISOSCELES">
+            </div>
         </div>
-        <h1>Ángulo Llano</h1>
-        <p>Presiona el botón para ver un ángulo Llano:</p>
-        <button id="mostrarAnguloLlano" class="btn btn-primary">Mostrar</button>
-        <div id="imagenAnguloLlanoContainer" class="mt-3">
-            <img id="imagenAnguloLlano" class="angulo-llano-img" src="images/angulos-llanos.jpg" alt="Ángulo Llano">
+        <p>
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapsEscaleno" role="button" aria-expanded="false" aria-controls="collapsEscaleno">
+              TRIANGULO ESCALENO
+            </a>
+        </p>
+        <div class="collapse" id="collapsEscaleno">
+            <div class="card card-body">
+                El triángulo escaleno es el que posee todos los lados y ángulos diferentes. También es conocido como triángulo desigual. Es decir, es un polígono de tres lados en el que cada lado tiene una medida y cada ángulo una amplitud diferente.
+                <img src="images/escaleno.webp" alt="ESCALENO">
+            </div>
         </div>
-
     </div>
-    <div class="container mt-5">
-      <h2>Calculadora de Tipo de Ángulo</h2>
-      <form id="angle-form">
-          <div class="form-group">
-              <label for="angle">Ingresar Ángulo (0-180 grados):</label>
-              <input type="number" class="form-control" id="angle" min="0" max="180" required>
-          </div>
-          <button type="submit" class="btn btn-primary">Determinar Tipo de Ángulo</button>
-      </form>
-      <div id="result" class="mt-3"></div>
-  </div>
+
 
   </div>
 
@@ -162,58 +149,11 @@
 
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
-
+  <script type="text/javascript" src="js/bundle.js"></script>
 
   <script>
-        // JavaScript para mostrar la imagen cuando se hace clic en el botón
-        const mostrarBoton = document.getElementById('mostrarAnguloRecto');
-        const mostrarBoton2 = document.getElementById('mostrarAnguloObtuso');
-        const mostrarBoton3 = document.getElementById('mostrarAnguloLlano');
-        const imagenAnguloRectoContainer = document.getElementById('imagenAnguloRectoContainer');
+
         
-        mostrarBoton.addEventListener('click', function () {
-            const imagenAnguloRecto = document.getElementById('imagenAnguloRecto');
-            imagenAnguloRecto.style.display = 'block'; // Muestra la imagen
-        });
-
-        mostrarBoton2.addEventListener('click', function () {
-            const mostrarAnguloObtuso = document.getElementById('imagenAnguloObtuso');
-            mostrarAnguloObtuso.style.display = 'block'; // Muestra la imagen
-        });
-
-        mostrarBoton3.addEventListener('click', function () {
-            const mostrarAnguloLlano = document.getElementById('imagenAnguloLlano');
-            mostrarAnguloLlano.style.display = 'block'; // Muestra la imagen
-        });
-        document.getElementById("angle-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            determineAngleType();
-        });
-
-        function determineAngleType() {
-            // Obtener el valor del ángulo ingresado por el usuario
-            const angle = parseFloat(document.getElementById("angle").value);
-
-            // Determinar el tipo de ángulo
-            let angleType;
-            if (angle === 0) {
-                angleType = "Ángulo Nulo";
-            } else if (angle > 0 && angle < 90) {
-                angleType = "Ángulo Agudo";
-            } else if (angle === 90) {
-                angleType = "Ángulo Recto";
-            } else if (angle > 90 && angle < 180) {
-                angleType = "Ángulo Obtuso";
-            } else if (angle === 180) {
-                angleType = "Ángulo Llano";
-            } else {
-                angleType = "Ángulo No Válido";
-            }
-
-            // Mostrar el resultado en la página
-            const resultElement = document.getElementById("result");
-            resultElement.innerHTML = `El ángulo ingresado es: ${angle} grados, y es un ${angleType}.`;
-        }
   </script>
 
 </body>

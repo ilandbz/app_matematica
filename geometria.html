@@ -134,6 +134,11 @@
 
     </div>
     <div class="container mt-5">
+      
+<script>
+
+
+</script>
       <h2>Calculadora de Tipo de Ángulo</h2>
       <form id="angle-form">
           <div class="form-group">
@@ -142,7 +147,9 @@
           </div>
           <button type="submit" class="btn btn-primary">Determinar Tipo de Ángulo</button>
       </form>
+      
       <div id="result" class="mt-3"></div>
+      <canvas id="canvas" width="300" height="300"></canvas>
   </div>
 
   </div>
@@ -165,6 +172,16 @@
 
 
   <script>
+        // Obtener el elemento canvas y su contexto
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+
+        // Ingresar el valor del ángulo en grados
+        //var angulo_grados = parseFloat(prompt("Ingresa el valor del ángulo en grados:"));
+
+
+
+
         // JavaScript para mostrar la imagen cuando se hace clic en el botón
         const mostrarBoton = document.getElementById('mostrarAnguloRecto');
         const mostrarBoton2 = document.getElementById('mostrarAnguloObtuso');
@@ -187,13 +204,18 @@
         });
         document.getElementById("angle-form").addEventListener("submit", function(event) {
             event.preventDefault();
+            
             determineAngleType();
+
+
+
+
         });
 
         function determineAngleType() {
+            console.log('asdasdasd')
             // Obtener el valor del ángulo ingresado por el usuario
             const angle = parseFloat(document.getElementById("angle").value);
-
             // Determinar el tipo de ángulo
             let angleType;
             if (angle === 0) {
@@ -209,11 +231,44 @@
             } else {
                 angleType = "Ángulo No Válido";
             }
-
             // Mostrar el resultado en la página
             const resultElement = document.getElementById("result");
             resultElement.innerHTML = `El ángulo ingresado es: ${angle} grados, y es un ${angleType}.`;
+            angulo_grados=angle
+
+// Convertir grados a radianes
+var angulo_radianes = (angulo_grados * Math.PI) / 180;
+
+// Configurar el centro del círculo y el radio
+var centerX = canvas.width / 2;
+var centerY = canvas.height / 2;
+var radio = 100;
+
+// Dibujar el círculo completo
+ctx.beginPath();
+ctx.arc(centerX, centerY, radio, 0, 2 * Math.PI);
+ctx.stroke();
+
+// Dibujar el sector circular
+ctx.beginPath();
+ctx.moveTo(centerX, centerY);
+ctx.arc(centerX, centerY, radio, 0, angulo_radianes);
+ctx.lineTo(centerX, centerY);
+ctx.fillStyle = 'blue';
+ctx.fill();
+
+
         }
+
+
+
+
+
+
+
+
+
+        
   </script>
 
 </body>

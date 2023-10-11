@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diagrama de Ángulo</title>
+</head>
+<body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+    <script>
+        // Obtener el elemento canvas y su contexto
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+
+        // Ingresar el valor del ángulo en grados
+        //var angulo_grados = parseFloat(prompt("Ingresa el valor del ángulo en grados:"));
+
+
+        angulo_grados=30
+
+        // Convertir grados a radianes
+        var angulo_radianes = (angulo_grados * Math.PI) / 180;
+
+        // Configurar el centro del círculo y el radio
+        var centerX = canvas.width / 2;
+        var centerY = canvas.height / 2;
+        var radio = 100;
+
+        // Dibujar el círculo completo
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radio, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        // Dibujar el sector circular
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radio, 0, angulo_radianes);
+        ctx.lineTo(centerX, centerY);
+        ctx.fillStyle = 'blue';
+        ctx.fill();
+    </script>
+</body>
+</html>

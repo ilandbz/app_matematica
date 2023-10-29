@@ -119,6 +119,24 @@
               <canvas id="myChart" width="400" height="200"></canvas>
           </div>
         </div>
+
+        <div class="mt-3">
+          <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Intervalo de Frecuencias</th>
+                  <th>Marca de Clase</th>
+                  <th>Frecuencia Absoluta</th>
+                  <th>Frecuencia Absoluta Acumulada</th>
+                  <th>Frecuencia Relativa</th>
+                  <th>Frecuencia Relativa Acumulada</th>
+                </tr>
+              </thead>
+              <tbody id="tablaFrecuencias">
+                  <!-- Aquí se llenará la tabla de frecuencias con JavaScript -->
+              </tbody>
+          </table>
+      </div>
     </section>
 
 
@@ -149,6 +167,9 @@
         // Agrega un evento clic al botón "Calcular"
         document.getElementById("calcularBtn").addEventListener("click", function() {
             // Obtiene los datos ingresados por el usuario
+
+
+
             const inputData = document.getElementById("dataInput").value;
             // Divide los datos separados por comas en un array
             const datos = inputData.split(",").map(Number);
@@ -167,7 +188,72 @@
             // Genera el gráfico de barras utilizando Chart.js
             generarGrafico(datos);
 
+            var data = inputData.split(',').map(function (item) {
+        return parseFloat(item.trim());
+    });
+
+    // Define el número de clases (intervalos) que deseas en tu tabla de frecuencias
+    var numClases = 5; // Puedes ajustar este valor según tus necesidades
+
+    // Calcula el rango de datos y el ancho de clase
+    var maxData = Math.max(...data);
+    var minData = Math.min(...data);
+    var range = maxData - minData;
+    var widthOfClass = range / numClases;
+
+    // Inicializa las variables para el cálculo
+    var frecuencias = Array(numClases).fill(0);
+    var marcaDeClase = [];
+    var frecuenciaAcumulada = 0;
+    var frecuenciaRelativaAcumulada = 0;
+
+    // Calcula la tabla de frecuencias
+    for (var i = 0; i < numClases; i++) {
+        var claseMin = minData + i * widthOfClass;
+        var claseMax = claseMin + widthOfClass;
+        marcaDeClase[i] = (claseMin + claseMax) / 2;
+
+        data.forEach(function (dato) {
+            if (dato >= claseMin && dato < claseMax) {
+                frecuencias[i]++;
+            }
         });
+
+        frecuenciaAcumulada += frecuencias[i];
+        var frecuenciaRelativa = frecuencias[i] / data.length;
+        frecuenciaRelativaAcumulada += frecuenciaRelativa;
+
+        var fila = document.createElement('tr');
+        var intervaloCell = document.createElement('td');
+        var marcaDeClaseCell = document.createElement('td');
+        var frecuenciaAbsolutaCell = document.createElement('td');
+        var frecuenciaAbsolutaAcumuladaCell = document.createElement('td');
+        var frecuenciaRelativaCell = document.createElement('td');
+        var frecuenciaRelativaAcumuladaCell = document.createElement('td');
+
+        intervaloCell.textContent = `[${claseMin.toFixed(2)} - ${claseMax.toFixed(2)})`;
+        marcaDeClaseCell.textContent = marcaDeClase[i].toFixed(2);
+        frecuenciaAbsolutaCell.textContent = frecuencias[i];
+        frecuenciaAbsolutaAcumuladaCell.textContent = frecuenciaAcumulada;
+        frecuenciaRelativaCell.textContent = frecuenciaRelativa.toFixed(2);
+        frecuenciaRelativaAcumuladaCell.textContent = frecuenciaRelativaAcumulada.toFixed(2);
+
+        fila.appendChild(intervaloCell);
+        fila.appendChild(marcaDeClaseCell);
+        fila.appendChild(frecuenciaAbsolutaCell);
+        fila.appendChild(frecuenciaAbsolutaAcumuladaCell);
+        fila.appendChild(frecuenciaRelativaCell);
+        fila.appendChild(frecuenciaRelativaAcumuladaCell);
+
+        tablaFrecuencias.appendChild(fila);
+
+      }
+
+        });
+
+
+
+
         function generarGrafico(dataArray) {
     const ctx = document.getElementById("myChart").getContext("2d");
     new Chart(ctx, {

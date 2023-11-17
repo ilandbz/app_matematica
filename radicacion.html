@@ -37,7 +37,7 @@
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="index.html">
             <span>
-              SOFTWARE MATEMÁTICO (SAM)
+              APP MATEMÁTICO
             </span>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -61,9 +61,6 @@
                   <a class="nav-link" href="potencias.html"> Potencias </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="radicacion.html">Radicacion</a>
-                </li>
-                <li class="nav-item">
                   <a class="nav-link" href="ecuaciones.html"> Ecuaciones </a>
                 </li>
                 <li class="nav-item">
@@ -85,68 +82,80 @@
                   <a class="nav-link" href="geometria.html">Geometria</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="perimetros.html">Perimetros</a>
-                </li>
-                <li class="nav-item">
                   <a class="nav-link" href="triangulo.html">Triangulos</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="poligonos.html">Poligonos</a>
-                </li>                                   
+                </li>           
               </ul>
             </div>
           </div>
         </nav>
       </div>
     </header>
-        <div class="container mt-5">
-          <h1>Calculadora de Conjuntos</h1>
-          <!-- Conjunto Finito -->
-          <div class="mb-4">
-              <h2>Conjunto Finito</h2>
-              <div class="form-group">
-                  <label for="finiteSet">Conjunto (separado por comas):</label>
-                  <input type="text" class="form-control" id="finiteSet">
-              </div>
-              <button class="btn btn-primary" onclick="calculateFiniteSet()">Calcular</button>
-              <p>Resultado: <span id="resultFiniteSet"></span></p>
-          </div>
-  
-          <!-- Conjunto Infinito -->
-          <div class="mb-4">
-              <h2>Conjunto Infinito</h2>
-              <button class="btn btn-primary" onclick="calculateInfiniteSet()">Calcular</button>
-              <p>Resultado: <span id="resultInfiniteSet"></span></p>
-          </div>
-  
-          <!-- Conjunto Vacío -->
-          <div class="mb-4">
-              <h2>Conjunto Vacío</h2>
-              <button class="btn btn-primary" onclick="calculateEmptySet()">Calcular</button>
-              <p>Resultado: <span id="resultEmptySet"></span></p>
-          </div>
-  
-          <!-- Conjunto Unitario -->
-          <div class="mb-4">
-              <h2>Conjunto Unitario</h2>
-              <div class="form-group">
-                  <label for="unitaryElement">Elemento:</label>
-                  <input type="text" class="form-control" id="unitaryElement">
-              </div>
-              <button class="btn btn-primary" onclick="calculateUnitarySet()">Calcular</button>
-              <p>Resultado: <span id="resultUnitarySet"></span></p>
-          </div>
-  
-          <!-- Conjunto Heterogéneo/Homogéneo -->
-          <div class="mb-4">
-              <h2>Conjunto Heterogéneo/Homogéneo</h2>
-              <button class="btn btn-primary" onclick="calculateHeterogeneousSet()">Heterogéneo</button>
-              <button class="btn btn-primary" onclick="calculateHomogeneousSet()">Homogéneo</button>
-              <p>Resultado: <span id="resultHeterogeneousSet"></span></p>
-          </div>
+      <div class="container">
+
+
+        <h2>Teoría de Radicacion</h2>
+
+        <p>En matemáticas, la radicación es la operación inversa a la potenciación. Representa la extracción de la raíz de un número. La fórmula general para la radicación es:</p>
+        
+        <p>
+            Para un número real no negativo <code>a</code> y un índice <code>n</code>:
+            <br>
+            <code>√<sup>n</sup>a = a<sup>1/n</sup></code>
+        </p>
+        
+        <p>Donde:</p>
+        <ul>
+            <li><code>a</code> es el radicando.</li>
+            <li><code>n</code> es el índice o grado de la raíz.</li>
+        </ul>
+        
+        <p>Por ejemplo, para calcular la raíz cuadrada de 9:</p>
+        <code>√<sup>2</sup>9 = 9<sup>1/2</sup> = 3</code>
+        
+        <p>De manera más general, para cualquier número real no negativo <code>a</code> y un índice <code>n</code>:</p>
+        <code>√<sup>n</sup>a = a<sup>1/n</sup></code>
+      
+      
+      
+        <h2>Calculadora de Raíces</h2>
+      
+        <label for="base2">Ingrese la base:</label>
+        <input class="form-control mb-3" type="number" id="base2" placeholder="Ingrese la base">
+      
+        <label for="indice">Ingrese el índice:</label>
+        <input class="form-control mb-3" type="number" id="indice" placeholder="Ingrese el índice">
+      
+        <button class="btn btn-primary mb-3" id="calcularr">Calcular Raíz</button>
+      
+        <p id="resultado"></p>
+      
+      
+          <h2>Tabla de Radicación</h2>
+      
+          <label for="base">Ingrese el número base:</label>
+          <input class="form-control mb-3" type="number" id="base" placeholder="Ingrese el número base">
+          <button class="btn btn-primary mb-3" id="calcular">Calcular Tabla</button>
+      
+          <table id="tablaRadicacion">
+              <thead>
+                  <tr>
+                      <th>Raíz</th>
+                      <th>Resultado</th>
+                  </tr>
+              </thead>
+              <tbody></tbody>
+          </table>
+
       </div>
+
+
       <br>
       <a href="index.html" title="Volver Al Inicio"><img src="images/volver.webp" width="60px" alt=""></a>
+
+
   <!-- footer section -->
   <section class="container-fluid footer_section">
     <p>
@@ -159,40 +168,45 @@
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
   <script>
-        function calculateFiniteSet() {
-            const input = document.getElementById('finiteSet').value;
-            const elements = input.split(',').map(e => e.trim());
-            const result = elements.join(', ');
-            document.getElementById('resultFiniteSet').innerText = `{${result}}`;
+    document.getElementById('calcularr').addEventListener('click', function () {
+      const base = parseFloat(document.getElementById('base2').value);
+        const indice = parseFloat(document.getElementById('indice').value);
+        const resultadoElement = document.getElementById('resultado');
+        
+        if (isNaN(base) || isNaN(indice) || indice <= 0) {
+            resultadoElement.textContent = 'Por favor, ingrese valores válidos.';
+            return;
         }
 
-        function calculateInfiniteSet() {
-            document.getElementById('resultInfiniteSet').innerText = '∞';
-        }
+        const resultado = Math.pow(base, 1 / indice);
+        resultadoElement.innerHTML = `La raíz <sup>${"&radic;"}${indice}</sup> de ${base} es: <code>${resultado.toFixed(4)}</code>`;
+    });
 
-        function calculateEmptySet() {
-            document.getElementById('resultEmptySet').innerText = '∅';
-        }
 
-        function calculateUnitarySet() {
-            const element = document.getElementById('unitaryElement').value;
-            document.getElementById('resultUnitarySet').innerText = `{${element}}`;
-        }
+    document.getElementById('calcular').addEventListener('click', function () {
+        const base = parseFloat(document.getElementById('base').value);
+        const tablaRadicacion = document.getElementById('tablaRadicacion');
+        const tbody = tablaRadicacion.getElementsByTagName('tbody')[0];
+        tbody.innerHTML = ''; // Limpiamos resultados anteriores
 
-        function calculateHeterogeneousSet() {
-          const exampleHeterogeneousSet = [1, 'A', true, 'Hola', 3.14];
-          const result = `{${exampleHeterogeneousSet.join(', ')}}`;
-          document.getElementById('resultHeterogeneousSet').innerText = result;
+        for (let indice = 1; indice <= 12; indice++) {
+            const resultado = Math.pow(base, 1 / indice);
+            const fila = document.createElement('tr');
+            fila.innerHTML = `
+                <td>${base}<sup>${"&radic;"}${indice}</sup></td>
+                <td>${resultado.toFixed(4)}</td>
+            `;
+            tbody.appendChild(fila);
         }
-
-        function calculateHomogeneousSet() {
-          const exampleHomogeneousSet = [2, 4, 6, 8, 10];
-          const result = `{${exampleHomogeneousSet.join(', ')}}`;
-          document.getElementById('resultHeterogeneousSet').innerText = result;
-        }
-  </script>
-  
+    });
+</script>
  
 </body>
 
 </html>
+
+
+
+
+
+
